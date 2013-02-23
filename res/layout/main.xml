@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+	<ListView
+	    android:id="@id/android:list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@id/add_button"
+	    android:layout_alignTop="@id/android:empty" />
+
+	<TextView
+	    android:id="@id/android:empty"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@id/add_button"
+	    android:layout_below="@+id/imageButton"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:text="@string/no_tasks" />
+
+	<Button
+	    android:id="@+id/add_button"
+	    android:layout_width="70dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentRight="true"
+	    android:text="@string/add_task" />
+
+	<EditText
+	    android:id="@+id/new_task"
+	    android:layout_width="175dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/remove_button"
+	    android:layout_alignBottom="@+id/remove_button"
+	    android:layout_alignParentLeft="true"
+	    android:ems="10"
+	    android:hint="enter new task" >
+
+	    <requestFocus />
+	</EditText>
+
+	<Button
+	    android:id="@+id/remove_button"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_toLeftOf="@+id/add_button"
+	    android:text="@string/remove_completed_tasks" />
+
+	<ImageButton
+	    android:id="@+id/imageButton"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    android:src="@drawable/ic_launcher" />
+
+	<Button
+	    android:id="@+id/button3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/imageButton"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentTop="true"
+	    android:text="Button" />
+
+	<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/button3"
+	    android:layout_alignBottom="@+id/button3"
+	    android:layout_marginLeft="23dp"
+	    android:layout_toRightOf="@+id/imageButton"
+	    android:text="time-date"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
