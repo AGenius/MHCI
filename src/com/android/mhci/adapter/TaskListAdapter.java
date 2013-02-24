@@ -2,6 +2,8 @@ package com.android.mhci.adapter;
 
 import java.util.ArrayList;
 
+import org.joda.time.DateTime;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,10 @@ public class TaskListAdapter extends BaseAdapter {
 
 	public long getItemId(int position) {
 		return position;
+	}
+	
+	public ArrayList<Task> getTasks() {
+		return tasks;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {

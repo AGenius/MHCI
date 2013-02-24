@@ -3,6 +3,8 @@ package com.android.mhci;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.joda.time.DateTime;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -32,6 +34,10 @@ public class AddTaskActivity extends TaskManagerActivity {
 	private Button cancelAddButton;
 	private CustomDateTimePicker custom;
 	
+	private DateTime taskDate;
+	private String taskPriority;
+	private String taskLocation;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,14 +47,21 @@ public class AddTaskActivity extends TaskManagerActivity {
 	}
 
 	protected void addTask() {
+		Task t = null;
 		Bundle data = getIntent().getExtras();
-		priority.getSelectedItem();
+		taskPriority = (String) priority.getSelectedItem();
 		if (data != null) {
 			String taskName = data.getString("TASK");
-			Task t = new Task(taskName);
-			getStuffApplication().addTask(t);
+			if (taskDate == null)
+				taskDate = new DateTime();
+			t = new Task(taskName, taskPriority, taskDate);
+		} else {
 			finish();
 		}
+		if (taskLocation != "")
+			t.setLocation(taskLocation);
+		getStuffApplication().addTask(t);
+		finish();
 	}
 
 	protected void cancel() {
@@ -104,6 +117,9 @@ public class AddTaskActivity extends TaskManagerActivity {
 							String weekDayFullName, String weekDayShortName,
 							int hour24, int hour12, int min, int sec,
 							String AM_PM) {
+						
+						taskDate = new DateTime(calendarSelected);
+						
 						((TextView) findViewById(R.id.date_textView))
 								.setText("REMIND ME ON-"
 										+ calendarSelected

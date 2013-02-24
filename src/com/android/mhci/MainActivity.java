@@ -1,5 +1,7 @@
 package com.android.mhci;
 
+import org.joda.time.DateTime;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +29,8 @@ public class MainActivity extends ListActivity {
 	private ImageButton approaching;
 	private TextView currentTime;
 	private Button completed;
+	// variables for completedButton and approachingButton clicks
+	private boolean isClicked;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,14 @@ public class MainActivity extends ListActivity {
 		currentTime = (TextView)findViewById(R.id.textView1);
 		completed = (Button)findViewById(R.id.button3);
 		
+		currentTime.setText(new DateTime().toLocalDate().toString());
+		currentTime.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				adapter = new TaskListAdapter(MainActivity.this, app.getCurrentTasks());
+				setListAdapter(adapter);
+			}
+		});
+		
 		addButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				
@@ -82,19 +94,25 @@ public class MainActivity extends ListActivity {
 		});
 		approaching.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(View v) {
+				isClicked = true;
 			   Toast.makeText(MainActivity.this,
-				"Approaching tasks Button is clicked!", Toast.LENGTH_SHORT).show();
+				"Approaching tasks", Toast.LENGTH_SHORT).show();
+			   // set array adapter to approaching tasks array
+			   adapter = new TaskListAdapter(MainActivity.this, app.getApproachingTasks());
+			   setListAdapter(adapter);
 			}
 		});
 		completed.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(View v) {
+				isClicked = true;
 			   Toast.makeText(MainActivity.this,
-				"comepleted tasks button is clicked!", Toast.LENGTH_SHORT).show();
- 
+				"Completed tasks", Toast.LENGTH_SHORT).show();
+			   // set array adapter to completed tasks array
+			   adapter = new TaskListAdapter(MainActivity.this, app.getCompletedTasks());
+		       setListAdapter(adapter);
 			}
- 
 		});
 	}
 
