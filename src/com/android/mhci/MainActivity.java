@@ -39,7 +39,7 @@ public class MainActivity extends ListActivity {
         
         setUpViews();
         app = (TaskManagerApplication)getApplication();
-        adapter = new TaskListAdapter(this, app.getCurrentTasks());
+        adapter = new TaskListAdapter(this, app.getallTasks());
         setListAdapter(adapter);
     }
 	

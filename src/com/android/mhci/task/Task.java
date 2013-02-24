@@ -16,7 +16,7 @@ public class Task {
 	public Task(String name, String priority, DateTime date) {
 		super();
 		this.name = name;
-		this.priority = priority;
+		this.setPriority(priority);
 		this.date = date;
 	}
 
@@ -58,6 +58,14 @@ public class Task {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
 	}
 
 }

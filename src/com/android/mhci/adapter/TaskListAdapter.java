@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.joda.time.DateTime;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -47,6 +48,12 @@ public class TaskListAdapter extends BaseAdapter {
 			tli = (TaskListItem)convertView;
 		}
 		tli.setTask(tasks.get(position));
+		if (tasks.get(position).getPriority().equalsIgnoreCase("normal"))
+			tli.setBackgroundColor(Color.CYAN);
+		else if (tasks.get(position).getPriority().equalsIgnoreCase("moderate"))
+			tli.setBackgroundColor(Color.GREEN);
+		else 
+			tli.setBackgroundColor(Color.RED);
 		return tli;
 	}
 

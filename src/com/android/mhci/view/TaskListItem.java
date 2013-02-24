@@ -2,8 +2,10 @@ package com.android.mhci.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.mhci.task.Task;
 
