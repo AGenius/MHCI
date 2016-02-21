@@ -154,7 +154,7 @@ public class CustomDateTimePicker implements OnClickListener {
                     calendar_date.get(Calendar.MONTH),
                     calendar_date.get(Calendar.DATE));
 
-            btn_setDate.performClick(); // Do this before show  (Darren Lawrence)
+            btn_setDate.performClick(); // Do this before show  (AG)
             dialog.show();
 
            // btn_setDate.performClick();
@@ -249,24 +249,24 @@ public class CustomDateTimePicker implements OnClickListener {
                 btn_setTime.setEnabled(true);
                 btn_setDate.setEnabled(false);
                 //viewSwitcher.showNext();
-                viewSwitcher.setDisplayedChild(1); // Force to use First Child as sometimes the Time would show instead (Darren Lawrence)
+                viewSwitcher.setDisplayedChild(1); // Force to use First Child as sometimes the Time would show instead (AG)
                 break;
 
             case SET_TIME:
                 btn_setTime.setEnabled(false);
                 btn_setDate.setEnabled(true);
                 //viewSwitcher.showPrevious();
-                viewSwitcher.setDisplayedChild(2); // Force to use Second Child as sometimes the Time would show first instead (Darren Lawrence)
+                viewSwitcher.setDisplayedChild(2); // Force to use Second Child as sometimes the Time would show first instead (AG)
                 break;
 
             case SET:
                 if (iCustomDateTimeListener != null) {
-                    int month = datePicker.getMonth() + 1; // Months start from Zero so add 1 (Darren Lawrence)
+                    int month = datePicker.getMonth() + 1; // Months start from Zero so add 1 (AG)
                     int year = datePicker.getYear();
                     int day = datePicker.getDayOfMonth();
 
-                    selectedHour = timePicker.getCurrentHour();// Corrected where Hours are set - incorrectly set to use selectedhour without taking from selected time by user (Darren Lawrence)
-                    selectedMinute = timePicker.getCurrentMinute();// Corrected where Minutes are set - incorrectly set to use selectedMinute without taking from selected time by user (Darren Lawrence)
+                    selectedHour = timePicker.getCurrentHour();// Corrected where Hours are set - incorrectly set to use selectedhour without taking from selected time by user (AG)
+                    selectedMinute = timePicker.getCurrentMinute();// Corrected where Minutes are set - incorrectly set to use selectedMinute without taking from selected time by user (AG)
 
                     calendar_date.set(year, month, day, selectedHour, selectedMinute);
 
